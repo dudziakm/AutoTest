@@ -1,7 +1,14 @@
-import org.junit.*;
+package tests;
+
 import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 
 public class ChromeTest {
@@ -13,14 +20,14 @@ public class ChromeTest {
         WebDriverManager.chromedriver().setup();
     }
 
-    @Before
+    @BeforeMethod
     public void setupTest() {
         driver = new ChromeDriver();
         driver.get("http://www.wp.pl");
         System.out.println("test3");
     }
 
-    @After
+    @AfterMethod
     public void teardown() {
         if (driver != null) {
             driver.quit();
